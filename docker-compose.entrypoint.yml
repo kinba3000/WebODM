@@ -1,0 +1,6 @@
+version: '2.1' 
+services:
+  webodm:
+    build: .
+    container_name: webodm-container
+    entrypoint: ["/bin/sh", "-c", "./webodm.sh start"]
