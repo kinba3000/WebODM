@@ -183,6 +183,7 @@ class Task(models.Model):
             'orthophoto.png': os.path.join('odm_orthophoto', 'odm_orthophoto.png'),
             'orthophoto.mbtiles': os.path.join('odm_orthophoto', 'odm_orthophoto.mbtiles'),
             'orthophoto.kmz': os.path.join('odm_orthophoto', 'odm_orthophoto.kmz'),
+            'cutline.gpkg': os.path.join('odm_orthophoto', 'cutline.gpkg'),
             'georeferenced_model.las': os.path.join('odm_georeferencing', 'odm_georeferenced_model.las'),
             'georeferenced_model.laz': os.path.join('odm_georeferencing', 'odm_georeferenced_model.laz'),
             'georeferenced_model.ply': os.path.join('odm_georeferencing', 'odm_georeferenced_model.ply'),
@@ -651,7 +652,7 @@ class Task(models.Model):
 
         try:
             self.extract_assets_and_complete()
-        except zipfile.BadZipFile:
+        except (zipfile.BadZipFile, FileNotFoundError):
             raise NodeServerError(gettext("Invalid zip file"))
         except NotImplementedError:
             raise NodeServerError(gettext("Unsupported compression method"))
@@ -1304,8 +1305,9 @@ class Task(models.Model):
                 self.check_if_canceled()
                 last_update = time.time()
 
-        resized_images = list(map(partial(resize_image, resize_to=self.resize_to, done=callback), images_path))
-
+        resized_images = [im for im in list(map(partial(resize_image, resize_to=self.resize_to, done=callback), images_path)) 
+                          if im is not None]
+        
         Task.objects.filter(pk=self.id).update(resize_progress=1.0)
 
         return resized_images
