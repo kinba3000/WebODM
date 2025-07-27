@@ -67,9 +67,27 @@ services:
     oom_score_adj: 250
     networks:
       - dokploy-network
-  node-odm:
+  node-odm-1:
     image: opendronemap/nodeodm
-    container_name: node-odm
+    container_name: webodm-node-odm-1
+    expose:
+      - "3000"
+    restart: unless-stopped
+    oom_score_adj: 500
+    networks:
+      - dokploy-network
+  node-odm-2:
+    image: opendronemap/nodeodm
+    container_name: webodm-node-odm-2
+    expose:
+      - "3000"
+    restart: unless-stopped
+    oom_score_adj: 500
+    networks:
+      - dokploy-network
+  node-odm-3:
+    image: opendronemap/nodeodm
+    container_name: webodm-node-odm-3
     expose:
       - "3000"
     restart: unless-stopped
