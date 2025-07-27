@@ -9,9 +9,13 @@ services:
       - node-odm
     environment:
       - WO_DEFAULT_NODES
+    networks:
+      - dokploy-network
   node-odm:
     image: opendronemap/nodeodm
     expose:
       - "3000"
     restart: unless-stopped
     oom_score_adj: 500
+    networks:
+      - dokploy-network

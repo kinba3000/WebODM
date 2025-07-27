@@ -14,6 +14,8 @@ services:
       - ${WO_DB_DIR}:/var/lib/postgresql/data:Z
     restart: unless-stopped
     oom_score_adj: -100
+    networks:
+      - dokploy-network
   webapp:
     image: opendronemap/webodm_webapp
     container_name: webapp
@@ -37,11 +39,15 @@ services:
       - WEB_CONCURRENCY
     restart: unless-stopped
     oom_score_adj: 0
+    networks:
+      - dokploy-network
   broker:
     image: redis:7.0.10
     container_name: broker
     restart: unless-stopped
     oom_score_adj: -500
+    networks:
+      - dokploy-network
   worker:
     image: opendronemap/webodm_webapp
     container_name: worker
@@ -58,3 +64,10 @@ services:
       - WEB_CONCURRENCY
     restart: unless-stopped
     oom_score_adj: 250
+    networks:
+      - dokploy-network
+ 
+networks:
+  dokploy-network:
+    external: true
+    name: dokploy-network
