@@ -37,6 +37,7 @@ services:
       - WO_DEV_WATCH_PLUGINS
       - WO_SECRET_KEY
       - WEB_CONCURRENCY
+      - WO_DEFAULT_NODES
     restart: unless-stopped
     oom_score_adj: 0
     networks:
@@ -66,6 +67,15 @@ services:
     oom_score_adj: 250
     networks:
       - dokploy-network
+  node-odm:
+    image: opendronemap/nodeodm
+    expose:
+      - "3000"
+    restart: unless-stopped
+    oom_score_adj: 500
+    networks:
+      - dokploy-network
+
  
 networks:
   dokploy-network:
