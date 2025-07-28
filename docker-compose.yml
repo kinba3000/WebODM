@@ -42,6 +42,11 @@ services:
     oom_score_adj: 0
     networks:
       - dokploy-network
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.frontend-app.rule=Host(`maps.solar4you.ch`)
+      - traefik.http.routers.frontend-app.entrypoints=web
+      - traefik.http.services.frontend-app.loadbalancer.server.port=8000
   broker:
     image: redis:7.0.10
     container_name: broker
