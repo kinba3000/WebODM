@@ -79577,7 +79577,7 @@ ENDSEC
 			));
 			// BLUE AREA
 			elToolbar.append(this.createToolIcon(
-				Potree.resourcePath + '/icons/area_blue.svg', // HINWEIS: Sie müssen dieses Icon erstellen
+				Potree.resourcePath + '/icons/area.svg', // HINWEIS: Sie müssen dieses Icon erstellen
 				'[title]tt.area_measurement', // Tooltip bleibt gleich
 				() => {
 					$('#menu_measurements').next().slideDown();
