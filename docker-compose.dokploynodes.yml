@@ -7,7 +7,7 @@ services:
     image: opendronemap/nodeodm
     container_name: webodm-node-odm-1
     ports:
-      - "3000:3201"
+      - "3201:3000"
     restart: unless-stopped
     oom_score_adj: 500
     networks:
@@ -16,7 +16,7 @@ services:
     image: opendronemap/nodeodm
     container_name: webodm-node-odm-2
     ports:
-      - "3000:3203"
+      - "3202:3000"
     restart: unless-stopped
     oom_score_adj: 500
     networks:
@@ -25,7 +25,7 @@ services:
     image: opendronemap/nodeodm
     container_name: webodm-node-odm-3
     ports:
-      - "3000:3203"
+      - "3203:3000"
     restart: unless-stopped
     oom_score_adj: 500
     networks:
