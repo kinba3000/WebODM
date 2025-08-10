@@ -1,7 +1,6 @@
 # This configuration does not include a processing node
 # Which makes for faster setup times
 version: '2.1'
-volumes:
 
 services:
   node-odm-1:
