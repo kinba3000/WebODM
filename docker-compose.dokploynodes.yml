@@ -2,6 +2,8 @@
 # Which makes for faster setup times
 version: '2.1'
 volumes:
+
+services:
   node-odm-1:
     image: opendronemap/nodeodm
     container_name: webodm-node-odm-1
