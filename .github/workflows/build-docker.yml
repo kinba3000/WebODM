@@ -9,9 +9,13 @@ env:
 on:
   release:
     types: [published]
+    branches:
+      - main
   push:
     tags:
       - "*"
+    branches:
+      - main
  
 
 jobs:
