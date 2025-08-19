@@ -2,11 +2,11 @@
 name: WebODM Custom Webapp
 
 on:
-    release:
-      types: [published]
-    push:
-      tags:
-        - "*"
+  release:
+    types: [published]
+  push:
+    tags:
+      - "*"
  
 
 jobs:
