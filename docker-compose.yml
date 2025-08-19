@@ -16,8 +16,9 @@ services:
     oom_score_adj: -100
     networks:
       - dokploy-network
+      
   webapp:
-    image: ghcr.io/kinba3000/webodm:latest
+    image: ghcr.io/kinba3000/webodm:latest 
     container_name: webapp
     entrypoint: /bin/bash -c "service cron start && chmod +x /webodm/*.sh && /bin/bash -c \"/webodm/wait-for-postgres.sh db /webodm/wait-for-it.sh -t 0 broker:6379 -- /webodm/start.sh\""
     volumes:
