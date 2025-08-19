@@ -2,11 +2,13 @@
 name: WebODM Custom Webapp
 
 on:
-  push:
-    branches:
-      - master  # Passe den Branch nach Bedarf an
+    release:
+      types: [published]
+    push:
+      tags:
+        - "*"
  
- 
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
