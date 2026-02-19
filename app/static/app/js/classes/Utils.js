@@ -123,7 +123,11 @@ export default {
     },
 
     isMobile: function(){
-      return navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i);
+      return navigator.userAgent.match(/(android)|(webOS)/i) || this.isIOS();
+    },
+
+    isIOS: function(){
+      return navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)/i) || (navigator.userAgent.match(/Mac/i) && "ontouchend" in document);
     },
 
     userInputToFilename(text, extension = ""){
@@ -136,6 +140,10 @@ export default {
             v = c === 'x' ? r : r & 0x3 | 0x8;
         return v.toString(16);
       });
+    },
+
+    isNumeric(n){
+      return !isNaN(parseFloat(n)) && isFinite(n);
     }
 };
 
