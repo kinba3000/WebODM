@@ -12,7 +12,7 @@ services:
     networks:
       - dokploy-network
   node-odm:
-    image: opendronemap/nodeodm
+    image: opendronemap/nodeodm:stable
     expose:
       - "3000"
     restart: unless-stopped
