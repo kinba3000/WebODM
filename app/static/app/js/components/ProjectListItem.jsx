@@ -140,7 +140,7 @@ class ProjectListItem extends React.Component {
           url : 'TO_BE_CHANGED',
           parallelUploads: 4,
           uploadMultiple: false,
-          acceptedFiles: "image/*,text/plain,.las,.laz,video/*,.srt,.dng,.nef",
+          acceptedFiles: "image/*,text/plain,.las,.laz,video/*,.srt,.dng,.nef,.gpx",
           autoProcessQueue: false,
           createImageThumbnails: false,
           clickable: this.uploadButton,
