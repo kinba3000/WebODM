@@ -5,8 +5,8 @@ version: '2.1'
 
 services:
   node-odm-1:
-    image: opendronemap/nodeodm
-    container_name: webodm-node-odm-1
+    image: webodm/nodeodx
+    container_name: node-odx-1
     ports:
       - "3201:3000"
     restart: unless-stopped
@@ -14,8 +14,8 @@ services:
     networks:
       - dokploy-network
   node-odm-2:
-    image: opendronemap/nodeodm
-    container_name: webodm-node-odm-2
+    image: webodm/nodeodx
+    container_name: node-odx-2
     ports:
       - "3202:3000"
     restart: unless-stopped
@@ -23,8 +23,8 @@ services:
     networks:
       - dokploy-network
   node-odm-3:
-    image: opendronemap/nodeodm
-    container_name: webodm-node-odm-3
+    image: webodm/nodeodx
+    container_name: node-odx-3
     ports:
       - "3203:3000"
     restart: unless-stopped
